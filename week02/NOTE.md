@@ -98,3 +98,61 @@
 不使用表单提交
 
 CORS
+
+## 重学JavaScript | 词法、类型
+
+### unicode
+
+> http://www.fileformat.info/info/unicode/index.htm
+
+InputElementDiv（带除号）
+- WhiteSpace 空格
+  - <TAB> 制表符
+  - <VT>  垂直制表符
+  - <FF>
+  - <SP>
+  - <NBSP> 不间断的空格，排版时不会被打断换行
+  - <ZWNBSP> zero width no-break space 零宽空格，BOM（byte order mask）
+  - <USP>
+- LineTerminator 换行
+- Comment 注释
+  - 单行
+  - 多行
+- Token 有效的输入
+  - Punctuator
+  - IdentifierName 标识符
+    - keywords
+    - Identifier
+    - Future reserved Keywords: enum
+  - Literal
+    - Number
+      - IEEE 754 Double Float
+        - sign(1)
+        - Exponent(11)
+        - Fraction(52)
+    - String
+      - Charactor
+      - Code Point
+      - Encoding
+        - ASCII
+        - Unicode
+        - UCS U+0000 - U+FFFF
+        - GB
+          - GB2312
+          - GBK(gb13000)
+          - GB18030
+        - ISO-8859
+        - BIG5
+        - UTF
+          - UTF8
+          - UTF16
+      - Grammar
+        - ""
+        - ''
+        - ``
+    - Boolean
+    - undefined
+    - null
+    - Object
+    - symbol
+
