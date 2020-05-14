@@ -1,0 +1,17 @@
+{
+  "name": "toy-browser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "serve": "node server/app.js",
+    "dev": "tsc -w"
+  },
+  "author": "huangzhi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {}
+}
