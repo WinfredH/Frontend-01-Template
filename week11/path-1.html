@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>path</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .cell {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: lightgray;
+      border-bottom: solid 1px white;
+      border-right: solid 1px white;
+      vertical-align: middle;
+      letter-spacing: 0;
+    }
+    .cell.actived {
+      background-color: darkslategray;
+    }
+    #container {
+      width: 701px;
+      font-size: 0;
+    }
+  </style>
+</head>
+<body>
+  <button id="save">save</button>
+  <div id="container"></div>
+  <script>
+    const map = localStorage.map ? JSON.parse(localStorage.map) : new Array(10001).join('0').split('').map(s => Number(s))
+    let container = document.getElementById('container')
+    for (let y = 0; y < 100; y++) {
+      for (let x = 0; x < 100; x++) {
+        const cell = document.createElement('div')
+        cell.classList.add('cell')
+        cell.setAttribute('map-id', String(y * 100 + x))
+        if (map[y * 100 + x] === 1) {
+          cell.classList.add('actived')
+        }
+        container.appendChild(cell)
+      }
+    }
+
+    // 鼠标全局监听
+    let mouse = false
+    let clear = false
+
+    document.addEventListener('mousedown', (e) => {
+      mouse = true
+      clear = e.button === 2
+    })
+    document.addEventListener('mouseup', () => {
+      mouse = false
+      if (clear) clear = false
+    })
+    document.getElementById('container').addEventListener('mouseover', (e) => {
+      if (!mouse) return
+      const target = e.target
+      const classList = target.classList
+      if (!classList.contains('cell')) return
+      const index = target.getAttribute('map-id')
+      if (!clear && !classList.contains('actived')) {
+        map[index] = 1
+        classList.add('actived')
+      }
+      if (clear && classList.contains('actived')) {
+        map[index] = 0
+        classList.remove('actived')
+      }
+    })
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+    })
+
+    // 保存
+    document.getElementById('save').addEventListener('click', () => {
+      localStorage['map'] = JSON.stringify(map)
+    })
+  </script>
+</body>
+</html>
